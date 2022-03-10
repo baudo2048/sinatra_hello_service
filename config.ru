@@ -1,6 +1,5 @@
-service = ENV["WHICH_APP"]
-$stdout.sync = true
-
+app_name = ENV["WHICH_APP"]
+puts service
 if service == 'mainapp'
   puts("trace: Rack Starting Main")
   require './main_app'
