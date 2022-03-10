@@ -2,13 +2,13 @@ require 'sinatra/base'
 require 'json'
 
 class ServiceApp < Sinatra::Base
-  before do
-    puts "before"
-  end
+
+  enable :sessions
 
   get "/api/sync/?" do
     content_type :json
-    puts "yes!"
-    { message: "Sync Random Called!"}.to_json
+    session[:count] = 0 if session[:count].nil?
+    { message: "Sync called #{session[:count]}"}.to_json
+    session[:count] += 1
   end
 end
