@@ -6,7 +6,7 @@ class ServiceApp < Sinatra::Base
     puts "before"
   end
 
-  get "/api/synch" do
+  get "/api/sync/?" do
     content_type :json
     puts "yes!"
     { message: "Sync Random Called!"}.to_json
