@@ -8,10 +8,11 @@ class MainApp < Sinatra::Base
   end
 
   post '/sync/random/' do
-    service_url = ENV["MAINAPP"]
-    url = "#{service_url}/api/sync"
+    servicehost = ENV["MAINAPP"]
+    url = "#{servicehost}/api/sync"
+    puts url
     data = Faraday.get(url).body
     result = JSON.parse(data, symbolize_names: true)
-    puts "Service Called!"
+    puts "Service Called #{result}"
   end
 end
