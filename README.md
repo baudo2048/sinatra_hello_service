@@ -23,7 +23,7 @@ $ heroku create --remote servapp
 $ heroku config:set WHICH_APP=mainapp --remote mainapp
 $ heroku config:set WHICH_APP=servapp --remote servapp
 $ heroku config:set MAINAPP_URL=xxx --remote servapp
-$ heroku config:set SERVAPP_URL=xxx --remote servapp
+$ heroku config:set SERVAPP_URL=xxx --remote mainapp
 
 
 ### Launch each one by pushing

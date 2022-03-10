@@ -13,7 +13,7 @@ class MainApp < Sinatra::Base
   end
 
   post '/sync/random/' do
-    servicehost = ENV["MAINAPP_URL"]
+    servicehost = ENV["SERVAPP_URL"]
     url = "#{servicehost}/api/sync"
     data = Faraday.get(
       url,
