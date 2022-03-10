@@ -8,16 +8,26 @@ http://stackoverflow.com/questions/4525482/in-sinatraruby-how-should-i-create-gl
 http://blog.markwatson.com/2011/11/ruby-sinatra-web-apps-with-background.html
 http://stackoverflow.com/questions/14388263/is-a-global-variable-defined-inside-a-sinatra-route-shared-between-requests
 
+## Interesting files
+* config.ru - 
+* procfile - 
+* config/puba.rb
+
 ## Heroku setup
 
 ### create two apps tied to the same git repo, but with separate git repos on heroku, with two remote names
 $ heroku create --remote mainapp
 $ heroku create --remote servapp
 
-### Set config variable called WHICH_APP which our code can check for
+### Set config variables to connect things together
 $ heroku config:set WHICH_APP=mainapp --remote mainapp
 $ heroku config:set WHICH_APP=servapp --remote servapp
+$ heroku config:set MAINAPP_URL=xxx --remote servapp
+$ heroku config:set SERVAPP_URL=xxx --remote servapp
+
 
 ### Launch each one by pushing
 $ git push mainapp main
 $ git push servapp main
+
+

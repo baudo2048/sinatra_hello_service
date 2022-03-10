@@ -1,7 +1,7 @@
 require 'sinatra/base'
 
 class ServiceApp < Sinatra::Base
-  get "/api/random" do
-    puts "Random Called!"
+  get "/api/synch" do
+    puts "Sync Random Called!"
   end
 end
