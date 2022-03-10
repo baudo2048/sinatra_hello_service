@@ -20,6 +20,6 @@ class MainApp < Sinatra::Base
       headers: {'Content-Type' => 'application/json'}
     ).body
     session[:result] = JSON.parse(data, symbolize_names: true)
-    redirect '/'
+    redirect to('/')
   end
 end
