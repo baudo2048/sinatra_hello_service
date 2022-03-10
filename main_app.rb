@@ -5,6 +5,9 @@ require 'active_record'
 require 'sinatra/activerecord'
 
 class MainApp < Sinatra::Base
+
+  enable :sessions
+
   get '/' do
     puts "--> #{session[:result]}"
     erb :home_page
@@ -15,7 +18,6 @@ class MainApp < Sinatra::Base
     url = "#{servicehost}/api/sync"
     data = Faraday.get(
       url,
-      params: {param: '1'},
       headers: {'Content-Type' => 'application/json'}
     ).body
     session[:result] = JSON.parse(data, symbolize_names: true)
