@@ -21,6 +21,6 @@ class ServiceApp < Sinatra::Base
 
   get "/api/sync/?" do
     content_type :json
-    { message: "Sync called #{self.incr_global(:counter)}"}.to_json
+    { message: "Sync called #{incr_global(:counter)}"}.to_json
   end
 end
