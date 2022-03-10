@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+<<<<<<< HEAD
     activemodel (7.0.2.3)
       activesupport (= 7.0.2.3)
     activerecord (7.0.2.3)
@@ -12,10 +13,13 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
     concurrent-ruby (1.1.9)
+=======
+>>>>>>> 17455b9146f874654b3b22ba4fe8b022e81cb000
     faraday (2.2.0)
       faraday-net_http (~> 2.0)
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (2.0.1)
+<<<<<<< HEAD
     i18n (1.10.0)
       concurrent-ruby (~> 1.0)
     minitest (5.15.0)
@@ -23,30 +27,43 @@ GEM
       ruby2_keywords (~> 0.0.1)
     nio4r (2.5.8)
     pg (1.3.3)
+=======
+    mustermann (1.1.1)
+      ruby2_keywords (~> 0.0.1)
+    nio4r (2.5.8)
+>>>>>>> 17455b9146f874654b3b22ba4fe8b022e81cb000
     puma (5.5.2)
       nio4r (~> 2.0)
     rack (2.2.3)
     rack-protection (2.2.0)
       rack
+<<<<<<< HEAD
     rake (13.0.6)
+=======
+>>>>>>> 17455b9146f874654b3b22ba4fe8b022e81cb000
     ruby2_keywords (0.0.5)
     sinatra (2.2.0)
       mustermann (~> 1.0)
       rack (~> 2.2)
       rack-protection (= 2.2.0)
       tilt (~> 2.0)
+<<<<<<< HEAD
     sinatra-activerecord (2.0.25)
       activerecord (>= 4.1)
       sinatra (>= 1.0)
     tilt (2.0.10)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
+=======
+    tilt (2.0.10)
+>>>>>>> 17455b9146f874654b3b22ba4fe8b022e81cb000
 
 PLATFORMS
   x86_64-darwin-21
   x86_64-linux
 
 DEPENDENCIES
+<<<<<<< HEAD
   activerecord
   faraday
   pg
@@ -54,6 +71,11 @@ DEPENDENCIES
   rake
   sinatra
   sinatra-activerecord
+=======
+  faraday
+  puma
+  sinatra
+>>>>>>> 17455b9146f874654b3b22ba4fe8b022e81cb000
 
 BUNDLED WITH
    2.3.5
