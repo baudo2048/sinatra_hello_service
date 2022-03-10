@@ -7,7 +7,7 @@ class MainApp < Sinatra::Base
     erb :home_page
   end
 
-  get '/sync/random/' do
+  post '/sync/random/' do
     service_url = ENV["MAINAPP"]
     url = "#{service_url}/api/sync"
     data = Faraday.get(url).body
