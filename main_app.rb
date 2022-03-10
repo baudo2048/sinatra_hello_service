@@ -6,7 +6,7 @@ require 'sinatra/activerecord'
 
 class MainApp < Sinatra::Base
   get '/' do
-    puts @result
+    puts "--> #{@result}"
     erb :home_page
   end
 
