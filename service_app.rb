@@ -3,10 +3,11 @@ require 'json'
 
 class ServiceApp < Sinatra::Base
   before do
-    content_type :json
+    puts "before"
   end
 
   get "/api/synch" do
+    content_type :json
     puts "yes!"
     { message: "Sync Random Called!"}.to_json
   end
