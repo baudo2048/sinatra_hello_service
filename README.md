@@ -1,2 +1,18 @@
 # sinatra_hello_service
 Demonstration of a pattern for services on heroku using Sinatra
+
+## references
+http://blog.carbonfive.com/2014/04/28/micromessaging-connecting-heroku-microservices-wredis-and-rabbitmq/
+https://silkandspinach.net/2014/08/31/sinatraheroku-microservices/
+http://stackoverflow.com/questions/4525482/in-sinatraruby-how-should-i-create-global-variables-which-are-assigned-values
+http://blog.markwatson.com/2011/11/ruby-sinatra-web-apps-with-background.html
+http://stackoverflow.com/questions/14388263/is-a-global-variable-defined-inside-a-sinatra-route-shared-between-requests
+
+## Heroku setup
+
+# create two apps tied to the same git repo, but with separate git repos on heroku, with two remote names
+$ heroku create --remote mainapp
+$ heroku create --remote servapp
+
+
+
