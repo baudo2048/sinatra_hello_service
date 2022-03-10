@@ -10,9 +10,14 @@ http://stackoverflow.com/questions/14388263/is-a-global-variable-defined-inside-
 
 ## Heroku setup
 
-# create two apps tied to the same git repo, but with separate git repos on heroku, with two remote names
+### create two apps tied to the same git repo, but with separate git repos on heroku, with two remote names
 $ heroku create --remote mainapp
 $ heroku create --remote servapp
 
+### Set config variable called WHICH_APP which our code can check for
+$ heroku config:set WHICH_APP=mainapp --remote mainapp
+$ heroku config:set WHICH_APP=servapp --remote servapp
 
-
+### Launch each one by pushing
+$ git push mainapp main
+$ git push servapp main
