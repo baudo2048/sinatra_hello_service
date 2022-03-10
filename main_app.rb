@@ -15,6 +15,7 @@ class MainApp < Sinatra::Base
   post '/sync/random/' do
     servicehost = ENV["SERVAPP_URL"]
     url = "#{servicehost}/api/sync"
+    puts "---> #{url}"
     data = Faraday.get(
       url,
       headers: {'Content-Type' => 'application/json'}
