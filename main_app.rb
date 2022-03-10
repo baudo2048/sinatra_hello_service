@@ -6,7 +6,7 @@ require 'sinatra/activerecord'
 
 class MainApp < Sinatra::Base
   get '/' do
-    puts "--> #{@result}"
+    puts "--> #{session[:result]}"
     erb :home_page
   end
 
@@ -18,8 +18,7 @@ class MainApp < Sinatra::Base
       params: {param: '1'},
       headers: {'Content-Type' => 'application/json'}
     ).body
-    @result = JSON.parse(data, symbolize_names: true)
-    puts @result
+    session[:result] = JSON.parse(data, symbolize_names: true)
     redirect '/'
   end
 end
