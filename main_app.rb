@@ -1,6 +1,8 @@
 require 'sinatra/base'
 require "faraday"
 require "json"
+require 'active_record'
+require 'sinatra/activerecord'
 
 class MainApp < Sinatra::Base
   get '/' do
