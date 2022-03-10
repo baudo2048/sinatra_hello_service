@@ -1,7 +1,6 @@
 require 'sinatra/base'
 require 'json'
 
-
 class ServiceApp < Sinatra::Base
   before do
     content_type :json

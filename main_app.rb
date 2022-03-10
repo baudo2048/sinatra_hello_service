@@ -12,6 +12,7 @@ class MainApp < Sinatra::Base
     url = "#{servicehost}/api/sync"
     puts url
     data = Faraday.get(url).body
+    puts data.to_s
     result = JSON.parse(data, symbolize_names: true)
     puts "Service Called #{result}"
   end
