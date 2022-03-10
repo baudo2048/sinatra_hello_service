@@ -1,11 +1,11 @@
 service = ENV["WHICH_APP"]
 $stdout.sync = true
 
-if service == 'main'
+if service == 'mainapp'
   puts("trace: Rack Starting Main")
   require './main_app'
   run MainApp
-elsif service == 'service'
+elsif service == 'servapp'
   puts("trace: Rack Starting App")
   require './service_app'
   run ServiceApp
