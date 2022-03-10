@@ -19,6 +19,7 @@ class MainApp < Sinatra::Base
       headers: {'Content-Type' => 'application/json'}
     ).body
     @result = JSON.parse(data, symbolize_names: true)
+    puts @result
     redirect '/'
   end
 end
