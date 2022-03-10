@@ -8,9 +8,10 @@ class MainApp < Sinatra::Base
   end
 
   get '/sync/random/' do
-    url = "http://dummy.restapiexample.com/api/v1/employees"
+    service_url = ENV["MAINAPP"]
+    url = "#{service_url}/api/sync"
     data = Faraday.get(url).body
     result = JSON.parse(data, symbolize_names: true)
-    assert_equal :success, result[:status]
+    puts "Service Called!"
   end
 end
