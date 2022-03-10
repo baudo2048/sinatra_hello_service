@@ -5,7 +5,7 @@ if app_name == 'mainapp'
   require './main_app'
   run MainApp
 elsif app_name == 'servapp'
-  puts("trace: Rack Starting App")
+  puts("trace: Rack Starting Service")
   require './service_app'
   run ServiceApp
 else
