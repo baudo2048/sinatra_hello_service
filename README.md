@@ -30,4 +30,8 @@ $ heroku config:set SERVAPP_URL=xxx --remote servapp
 $ git push mainapp main
 $ git push servapp main
 
+### Handy commands:
+* Update code: `git add --all; git commit -m "wip"; git push mainapp main; git push servapp main`
+* Look at logss: `heroku logs --remote mainapp -t`
+
 
