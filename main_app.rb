@@ -9,7 +9,6 @@ class MainApp < Sinatra::Base
   enable :sessions
 
   get '/' do
-    puts "--> #{session[:result]}"
     erb :home_page
   end
 
