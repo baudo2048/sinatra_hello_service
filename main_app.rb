@@ -3,7 +3,7 @@ require "faraday"
 require "json"
 require 'active_record'
 require 'sinatra/activerecord'
-require 'models/user'
+require_relative 'models/user'
 
 class MainApp < Sinatra::Base
 
