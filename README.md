@@ -30,6 +30,11 @@ $ heroku config:set SERVAPP_URL=xxx --remote mainapp
 $ git push mainapp main
 $ git push servapp main
 
+# Push when not working on main branch
+$ git push mainapp main:mybranch
+$ git push servapp main:mybranch
+
+
 ### Handy commands:
 * Update code: `git add --all; git commit -m "wip"; git push mainapp main; git push servapp main`
 * Look at logss: `heroku logs --remote mainapp -t`
