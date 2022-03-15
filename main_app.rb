@@ -9,6 +9,7 @@ class MainApp < Sinatra::Base
   enable :sessions
 
   get '/' do
+    @users = User.all
     erb :home_page
   end
 
