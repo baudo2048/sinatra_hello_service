@@ -16,7 +16,7 @@ class MainApp < Sinatra::Base
 
   post '/sync/random/' do
     servicehost = ENV["SERVAPP_URL"]
-    url = "https://#{servicehost}/api/sync"
+    url = "https://#{servicehost}.herokuapp.com/api/sync"
     puts "---> #{url}"
     data = Faraday.get(
       url,

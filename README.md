@@ -34,6 +34,13 @@ $ git push servapp main
 $ git push mainapp main:mybranch
 $ git push servapp main:mybranch
 
+# Addons
+$ heroku addons:create heroku-postgresql:hobby-dev -r mainapp
+$ heroku addons:attach postgresql-colorful-92347 -r servapp
+$ heroku addons:attach <pg dyno name> -r mainapp
+
+# Migration
+$ heroku run rake db:migrate -r mainapp
 
 ### Handy commands:
 * Update code: `git add --all; git commit -m "wip"; git push mainapp main; git push servapp main`
