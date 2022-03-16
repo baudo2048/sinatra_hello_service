@@ -6,10 +6,14 @@ require 'sinatra/activerecord'
 require_relative 'models/user'
 
 class MainApp < Sinatra::Base
-
   enable :sessions
+  
+  before do
+    config.logger = RemoteSyslogLogger.new('logsN.papertrailapp.com')
+  end
 
   get '/' do
+    logger.info "Hello Paper Trail"
     @users = User.all
     erb :home_page
   end
