@@ -2,6 +2,7 @@ require 'sinatra/base'
 require 'json'
 require 'logger'
 require 'faker'
+require_relative 'models/user'
 
 class ServiceApp < Sinatra::Base
   before do
