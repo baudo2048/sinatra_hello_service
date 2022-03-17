@@ -3,16 +3,13 @@ require "faraday"
 require "json"
 require 'active_record'
 require 'sinatra/activerecord'
-require 'remote_syslog_logger'
 require_relative 'models/user'
+require "logger"
 
 class MainApp < Sinatra::Base
   enable :sessions
-  
   before do
-    @logger = RemoteSyslogLogger.new('syslog.domain.com', 514,
-                  :program => "main_app",
-                  :local_hostname => "optional_hostname")
+    @logger = Logger.new(STDOUT)
   end
 
   get '/' do

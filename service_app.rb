@@ -1,8 +1,6 @@
 require 'sinatra/base'
 require 'json'
-require 'remote_syslog_logger'
-
-
+require 'logger'
 class ServiceApp < Sinatra::Base
   get "/api/sync/?" do
     content_type :json
