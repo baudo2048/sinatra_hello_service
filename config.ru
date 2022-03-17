@@ -1,5 +1,7 @@
 app_name = ENV["WHICH_APP"]
-logger.info app_name
+RemoteSyslogLogger.new('syslog.domain.com', 514,
+                  :program => "launch",
+                  :local_hostname => "optional_hostname").info app_name
 if app_name == 'mainapp'
   puts("trace: Rack Starting Main")
   require './main_app'
