@@ -2,7 +2,13 @@
 <h4>Users List
 There are currently: <%= @users.size %> users
 <h4>Syncronous Invocations</h2>
-<form method="POST" action="/sync/random/">
+<form method="POST" action="/users/add/ssync">
+  <input type="submit" />
+  last response: <%= session[:result] %>
+  </form>
+<p>
+<h4>Async Invocations</h2>
+<form method="POST" action="/users/add/async">
   <input type="submit" />
   last response: <%= session[:result] %>
   </form>

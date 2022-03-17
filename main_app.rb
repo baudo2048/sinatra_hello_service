@@ -19,16 +19,31 @@ class MainApp < Sinatra::Base
     erb :home_page
   end
 
-  post '/sync/random/' do
+  post '/users/add/sync' do
     servicehost = ENV["SERVAPP_URL"]
     url = "https://#{servicehost}.herokuapp.com"
     @logger.info "---> #{url}"
     conn = Faraday.new(url)
-    response = conn.get("/api/sync/") do |req|
+    response = conn.get("/api/user/add/sync/") do |req|
       req.params = {user_count: 5}
       req.headers = {'Content-Type' => 'application/json'}
     end
     session[:result] = JSON.parse(response.body, symbolize_names: true)
     redirect to('/')
   end
+
+  post '/users/add/async' do
+    servicehost = ENV["SERVAPP_URL"]
+    url = "https://#{servicehost}.herokuapp.com"
+    @logger.info "---> #{url}"
+    conn = Faraday.new(url)
+    response = conn.get("/api/user/add/async/") do |req|
+      req.params = {user_count: 5}
+      req.headers = {'Content-Type' => 'application/json'}
+    end
+    session[:result] = JSON.parse(response.body, symbolize_names: true)
+    redirect to('/')
+  end
+
+
 end

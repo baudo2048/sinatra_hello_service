@@ -8,14 +8,20 @@ require_relative 'models/user'
 
 class ServiceApp < Sinatra::Base
   before do
+    @logger.info "Hello Paper Trail: this is servapp"
     @logger = Logger.new($stdout)
   end
 
-  get "/api/sync/?" do
-    @logger.info "Hello Paper Trail: this is servapp"
+  get "/api/user/add/ssync" do
     content_type :json
     @logger.info "Requesting: #{params[:user_count]}"
     create_random_user(params[:user_count].to_i)
+    {message: "Sync api called: #{Time.now}"}.to_json
+  end
+
+  get "/api/user/add/async" do
+    content_type :json
+    Thread.new { create_random_user(params[:user_count].to_i) }
     {message: "Sync api called: #{Time.now}"}.to_json
   end
 
