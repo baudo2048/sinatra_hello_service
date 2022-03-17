@@ -1,4 +1,3 @@
-require 'remote_syslog_logger'
 app_name = ENV["WHICH_APP"]
 @logger = Logger.new(STDOUT).info app_name
 if app_name == 'mainapp'
