@@ -24,8 +24,8 @@ class MainApp < Sinatra::Base
     url = "https://#{servicehost}.herokuapp.com"
     @logger.info "---> #{url}"
     conn = Faraday.new(url)
-    response = conn.get("/api/sync") do |req|
-      req.params = { user_count: 5}
+    response = conn.get("/api/sync/") do |req|
+      req.params = {user_count: 5}
       req.headers = {'Content-Type' => 'application/json'}
     end
     session[:result] = JSON.parse(response.body, symbolize_names: true)
