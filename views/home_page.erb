@@ -1,17 +1,15 @@
 <h3>SOA Demo and Test example</h1>
-<h4>Users List
+<h4>Status</h4>
 <ul>
 <li>There are currently: <%= @users.size %> users</li>
 <li>last response: <%= session[:result] %></li>
 </ul>
-<h4>Syncronous Invocations</h2>
+<h4>Syncronous Invocations</h4>
 <form method="POST" action="/users/add/ssync">
   <input type="submit" />
   </form>
-<p>
-<h4>Async Invocations</h2>
+<h4>Async Invocations</h4>
 <form method="POST" action="/users/add/async">
   <input type="submit" />
   last response: <%= session[:result] %>
-  </form>
-<p>
+</form>
