@@ -8,6 +8,7 @@ require "logger"
 
 class MainApp < Sinatra::Base
   enable :sessions
+  
   before do
     @logger = Logger.new(STDOUT)
   end
