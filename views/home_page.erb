@@ -13,7 +13,7 @@
     var channel = pusher.subscribe('my-channel');
     channel.bind('my-event', function (data) {
       alert(JSON.stringify(data));
-      document.getElementById('async_response').innerHTML = JSON.stringify(data);
+      document.getElementById('async_response').innerHTML = JSON.stringify(data.message);
 
     });
   </script>
@@ -25,7 +25,7 @@
     <ul>
       <li>There are currently: <%= @users.size %> users</li>
       <li>last sync response: <%= session[:result] %></li>
-      <li>Last async response: <div id="async_response"></div></li>
+      <li>Last async response: <span id="async_response"></span></li>
     </ul>
     <h4>Syncronous Invocations</h4>
     <form method="POST" action="/users/add/ssync">
