@@ -28,7 +28,7 @@ class MainApp < Sinatra::Base
       req.params = { user_count: 5}
       req.headers = {'Content-Type' => 'application/json'}
     end
-    session[:result] = JSON.parse(response, symbolize_names: true)
+    session[:result] = JSON.parse(response.body, symbolize_names: true)
     redirect to('/')
   end
 end
