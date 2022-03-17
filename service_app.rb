@@ -11,8 +11,8 @@ class ServiceApp < Sinatra::Base
   get "/api/sync/?" do
     @logger.info "Hello Paper Trail: this is servapp"
     content_type :json
-    @logger.info params[:user_count]
-    create_random_user(params[:user_count])
+    @logger.info "Requesting: #{params[:user_count]}"
+    create_random_user(params[:user_count].to_i)
     {message: "Sync api called: #{Time.now}"}.to_json
   end
 
