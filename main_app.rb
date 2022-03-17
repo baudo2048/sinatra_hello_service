@@ -23,7 +23,7 @@ class MainApp < Sinatra::Base
     servicehost = ENV["SERVAPP_URL"]
     url = "https://#{servicehost}.herokuapp.com"
     @logger.info "---> #{url}"
-    conn = Faraday.new(urll)
+    conn = Faraday.new(url)
     response = conn.get do |req|
       req.url = "/api/sync"
       req.params = { user_count: 5}
