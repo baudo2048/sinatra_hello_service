@@ -12,7 +12,7 @@ class ServiceApp < Sinatra::Base
     @logger.info "Hello Paper Trail: this is servapp"
     content_type :json
     @logger.info params[:user_count]
-    create_random(params[:user_count])
+    create_random_user(params[:user_count])
     {message: "Sync api called: #{Time.now}"}.to_json
   end
 
