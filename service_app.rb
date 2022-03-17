@@ -8,8 +8,8 @@ require_relative 'models/user'
 
 class ServiceApp < Sinatra::Base
   before do
-    @logger.info "Hello Paper Trail: this is servapp"
     @logger = Logger.new($stdout)
+    @logger.info "Hello Paper Trail: this is servapp"
   end
 
   get "/api/user/add/ssync" do
