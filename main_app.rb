@@ -27,7 +27,7 @@ class MainApp < Sinatra::Base
     response = conn.get do |req|
       req.url = "/api/sync"
       req.params = { user_count: 5}
-      req.headers: {'Content-Type' => 'application/json'}
+      req.headers = {'Content-Type' => 'application/json'}
     end
     session[:result] = JSON.parse(response, symbolize_names: true)
     redirect to('/')
