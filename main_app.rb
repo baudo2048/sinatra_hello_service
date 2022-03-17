@@ -3,6 +3,7 @@ require "faraday"
 require "json"
 require 'active_record'
 require 'sinatra/activerecord'
+require 'remote_syslog_logger'
 require_relative 'models/user'
 
 class MainApp < Sinatra::Base

@@ -1,3 +1,4 @@
+require 'remote_syslog_logger'
 app_name = ENV["WHICH_APP"]
 RemoteSyslogLogger.new('syslog.domain.com', 514,
                   :program => "launch",
