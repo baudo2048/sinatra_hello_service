@@ -8,13 +8,13 @@ require "logger"
 
 class MainApp < Sinatra::Base
   enable :sessions
-  
+
   before do
     @logger = Logger.new(STDOUT)
   end
 
   get '/' do
-    @logger.info "Hello Paper Trail"
+    @logger.info "Hello Paper Trail: this is mainapp"
     @users = User.all
     erb :home_page
   end
