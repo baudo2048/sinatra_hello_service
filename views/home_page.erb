@@ -23,8 +23,8 @@
     <h4>Status</h4>
     <ul>
       <li>There are currently: <span id="user_count"><%= @users.size %></span> users</li>
-      <li>Last sync response: <%= session[:result] %></li>
-      <li>Last async response: <span id="async_response"></span></li>
+      <li>Last sync response at <%= JSON.parse(session[:result], symbolize_names: true)[:sync_time] %></li>
+      <li>Last async response at <span id="async_response"></span></li>
     </ul>
     <h4>Synchronous Request to create some number of User records</h4>
     <form method="POST" action="/users/add/sync">
