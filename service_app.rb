@@ -38,7 +38,7 @@ class ServiceApp < Sinatra::Base
                         final_total: "#{final_total}"
                       })
     end
-    {sync_time: "#{Time.now}"}.to_json
+    {message: " #{Time.now}"}.to_json
   end
 
   def create_random_user(count)
