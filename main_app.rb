@@ -25,7 +25,7 @@ class MainApp < Sinatra::Base
     @logger.info "---> #{url}"
     conn = Faraday.new(url)
     response = conn.get("/api/user/add/sync/") do |req|
-      req.params = {user_count: 25}
+      req.params = {user_count: 250}
       req.headers = {'Content-Type' => 'application/json'}
     end
     session[:result] = JSON.parse(response.body, symbolize_names: true)
@@ -38,7 +38,7 @@ class MainApp < Sinatra::Base
     @logger.info "---> #{url}"
     conn = Faraday.new(url)
     response = conn.get("/api/user/add/async/") do |req|
-      req.params = {user_count: 25}
+      req.params = {user_count: 250}
       req.headers = {'Content-Type' => 'application/json'}
     end
     session[:result] = JSON.parse(response.body, symbolize_names: true)
