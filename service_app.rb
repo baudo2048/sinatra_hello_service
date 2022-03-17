@@ -24,7 +24,7 @@ class ServiceApp < Sinatra::Base
     content_type :json
     @logger.info "Sync equesting: #{params[:user_count]}"
     create_random_user(params[:user_count].to_i)
-    {message: "Sync api called: #{Time.now}"}.to_json
+    {message: "#{Time.now}"}.to_json
   end
 
   get "/api/user/add/async/?" do
@@ -38,7 +38,7 @@ class ServiceApp < Sinatra::Base
                         final_total: "#{final_total}"
                       })
     end
-    {message: "Sync api called: #{Time.now}"}.to_json
+    {message: "#{Time.now}"}.to_json
   end
 
   def create_random_user(count)
