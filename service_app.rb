@@ -12,14 +12,14 @@ class ServiceApp < Sinatra::Base
     @logger.info "Hello Paper Trail: this is servapp"
   end
 
-  get "/api/user/add/ssync" do
+  get "/api/user/add/sync/?" do
     content_type :json
     @logger.info "Requesting: #{params[:user_count]}"
     create_random_user(params[:user_count].to_i)
     {message: "Sync api called: #{Time.now}"}.to_json
   end
 
-  get "/api/user/add/async" do
+  get "/api/user/add/async/?" do
     content_type :json
     Thread.new { create_random_user(params[:user_count].to_i) }
     {message: "Sync api called: #{Time.now}"}.to_json
