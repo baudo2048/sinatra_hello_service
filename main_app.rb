@@ -10,7 +10,7 @@ class MainApp < Sinatra::Base
   enable :sessions
 
   before do
-    @logger = Logger.new(STDOUT)
+    @logger = Logger.new($stdout)
   end
 
   get '/' do
@@ -44,6 +44,4 @@ class MainApp < Sinatra::Base
     session[:result] = JSON.parse(response.body, symbolize_names: true)
     redirect to('/')
   end
-
-
 end

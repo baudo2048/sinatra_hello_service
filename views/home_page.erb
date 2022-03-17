@@ -13,7 +13,7 @@
     var channel = pusher.subscribe('my-channel');
     channel.bind('my-event', function (data) {
       document.getElementById('async_response').innerHTML = JSON.stringify(data.message);
-
+      document.getElementById('user_count').innerHTML = JSON.stringify(data.final_total);
     });
   </script>
 </head>
@@ -22,7 +22,7 @@
   <h3>SOA Demo and Test example</h1>
     <h4>Status</h4>
     <ul>
-      <li>There are currently: <%= @users.size %> users</li>
+      <li>There are currently: <span id="user_count"><%= @users.size %> users</span></li>
       <li>last sync response: <%= session[:result] %></li>
       <li>Last async response: <span id="async_response"></span></li>
     </ul>

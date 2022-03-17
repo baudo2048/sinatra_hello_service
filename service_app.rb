@@ -31,16 +31,18 @@ class ServiceApp < Sinatra::Base
     content_type :json
     @logger.info "Sync equesting: #{params[:user_count]}"
     Thread.new do
-      create_random_user(params[:user_count].to_i)
+      final_total = create_random_user(params[:user_count].to_i)
       @logger.info "Asynch processing done. Triggering push"
       @pusher.trigger('my-channel', 'my-event', {
-                       message: "#{Time.now}"
-                     })
+                        message: "#{Time.now}",
+                        final_total: "#{final_total}"
+                      })
     end
     {message: "Sync api called: #{Time.now}"}.to_json
   end
 
   def create_random_user(count)
     count.times { User.create(name: Faker::Name.name, email: Faker::Internet.email) }
+    User.all.count
   end
 end
