@@ -1,6 +1,6 @@
 require 'logger'
 app_name = ENV["WHICH_APP"]
-Logger.new(STDOUT).info app_name
+Logger.new($stdout).info app_name
 if app_name == 'mainapp'
   puts("trace: Rack Starting Main")
   require './main_app'

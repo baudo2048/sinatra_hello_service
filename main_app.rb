@@ -21,13 +21,15 @@ class MainApp < Sinatra::Base
 
   post '/sync/random/' do
     servicehost = ENV["SERVAPP_URL"]
-    url = "https://#{servicehost}.herokuapp.com/api/sync"
+    url = "https://#{servicehost}.herokuapp.com"
     @logger.info "---> #{url}"
-    data = Faraday.get(
-      url,
-      headers: {'Content-Type' => 'application/json'}
-    ).body
-    session[:result] = JSON.parse(data, symbolize_names: true)
+    conn = Faraday.new(urll)
+    response = conn.get do |req|
+      req.url = "/api/sync"
+      req.params = { user_count: 5}
+      req.headers: {'Content-Type' => 'application/json'}
+    end
+    session[:result] = JSON.parse(response, symbolize_names: true)
     redirect to('/')
   end
 end
