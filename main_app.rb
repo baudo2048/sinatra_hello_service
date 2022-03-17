@@ -9,7 +9,6 @@ class MainApp < Sinatra::Base
   enable :sessions
   
   before do
-    config.logger = RemoteSyslogLogger.new('logsN.papertrailapp.com')
   end
 
   get '/' do
@@ -21,7 +20,7 @@ class MainApp < Sinatra::Base
   post '/sync/random/' do
     servicehost = ENV["SERVAPP_URL"]
     url = "https://#{servicehost}.herokuapp.com/api/sync"
-    puts "---> #{url}"
+    logger.info "---> #{url}"
     data = Faraday.get(
       url,
       headers: {'Content-Type' => 'application/json'}
