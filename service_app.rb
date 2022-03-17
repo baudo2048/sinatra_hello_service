@@ -31,6 +31,7 @@ class ServiceApp < Sinatra::Base
     content_type :json
     Thread.new do
       create_random_user(params[:user_count].to_i)
+      @logger.info "Asynch processing done. Triggering push"
       pusher.trigger('my-channel', 'my-event', {
                        message: 'hello world'
                      })
