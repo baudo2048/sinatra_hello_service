@@ -11,6 +11,14 @@ class BulkData
     User.delete_all
   end
 
+  def delete_all_follows
+    Follow.delete_all
+  end
+
+  def delete_all_tweets
+    Tweet.delete_all
+  end
+
   def load_all_follows
     csv = CSV.read('db/seeds/follows.csv', headers: true)
     csv_array_of_hash = csv.map(&:to_h)
@@ -26,5 +34,16 @@ class BulkData
         Tweet.insert row.to_h
       end
     end
+  end
+
+  def load_seed_tweets
+    idents = User.all.pluck(:ident)
+    tweets_to_add = []
+    CSV.foreach('db/seeds/tweets.csv', headers: true) do |row|
+      if idents.include? row["user_ident"]
+        tweets_to_add << row.to_h
+      end
+    end
+    Tweet.insert_all tweets_to_add
   end
 end
