@@ -23,7 +23,7 @@ class BulkData
     csv = CSV.read('db/seeds/tweets.csv', headers: true)
     array_of_tweets_hash = csv.map(&:to_h)
     idents = User.all.pluck(:ident)
-    tweets_records = array_of_tweets_hash.filter { |r| idents.intersect?(r["ident"]) }
+    tweets_records = array_of_tweets_hash.filter { |r| idents.intersect?([r["ident"]]) }
     Tweet.insert_all tweets_records
   end
 end
