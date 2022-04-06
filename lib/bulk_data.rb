@@ -20,10 +20,11 @@ class BulkData
   end
 
   def load_all_tweets
-    csv = CSV.read('db/seeds/tweets.csv', headers: true)
-    array_of_tweets_hash = csv.map(&:to_h)
     idents = User.all.pluck(:ident)
-    tweets_records = array_of_tweets_hash.filter { |r| idents.intersect?([r["ident"]]) }
-    Tweet.insert_all tweets_records
+    CSV.foreach('db/seeds/tweets.csv', headers: true) do |row|
+      if idents.include? row["user_ident"]
+        Tweet.insert row.to_h
+      end
+    end
   end
 end
