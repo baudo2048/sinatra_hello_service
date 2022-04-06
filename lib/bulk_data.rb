@@ -18,4 +18,12 @@ class BulkData
     follows_records = csv_array_of_hash.filter { |r| idents.intersect?([r["star_ident"], r["fan_ident"]]) }
     Follow.insert_all follows_records
   end
+
+  def load_all_tweets
+    csv = CSV.read('db/seeds/tweets.csv', headers: true)
+    array_of_tweets_hash = csv.map(&:to_h)
+    idents = User.all.pluck(:ident)
+    tweets_records = array_of_tweets_hash.filter { |r| idents.intersect?(r["ident"]) }
+    Tweet.insert_all tweets_records
+  end
 end
