@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <head>
   <title>Service Oriented Architecture</title>
   <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
@@ -35,3 +36,27 @@
       <input type="submit" />
     </form>
 </body>
+=======
+<h3>SOA Demo and Test example</h1>
+<h4>Status</h4>
+<ul>
+<li>There are currently: <%= @users.size %> users</li>
+<li>last response: <%= session[:result] %></li>
+</ul>
+<h4>Syncronous Invocations</h4>
+<form method="POST" action="/users/add/ssync">
+  <input type="submit" />
+  </form>
+<h4>Async Invocations</h4>
+<form method="POST" action="/users/add/async">
+  <input type="submit" />
+</form>
+<h4>Sync Add Seed Users</h4>
+<form method="POST" action="/seed/add/sync">
+  <input type="submit" />
+  </form>
+<h4>Async Add Seed Users</h4>
+<form method="POST" action="/seed/add/async">
+  <input type="submit" />
+</form>
+>>>>>>> Stashed changes

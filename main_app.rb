@@ -47,4 +47,10 @@ class MainApp < Sinatra::Base
     session[:result] = JSON.parse(response.body, symbolize_names: true)
     redirect to('/')
   end
+<<<<<<< Updated upstream
+=======
+
+  post '/seed/add/sync' do
+  end
+>>>>>>> Stashed changes
 end
