@@ -2,6 +2,8 @@
 # Note: Always type "bundle" at command line after making a chance here
 source 'https://rubygems.org'
 
+ruby "3.1.0"
+
 gem 'sinatra'
 gem 'puma'
 gem 'faraday'
