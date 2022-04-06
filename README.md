@@ -48,6 +48,6 @@ $ heroku addons:create papertrail:choklad -r mainapp
 ### Handy commands:
 
 * Update code: `git add --all; git commit -m "wip"; git push mainapp main; git push servapp main`
-* Look at logss: `heroku logs --remote mainapp -t`
+* Look at logs: `heroku logs --remote mainapp -t`
 
 
