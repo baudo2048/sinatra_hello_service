@@ -6,6 +6,9 @@ require 'active_record'
 require 'sinatra/activerecord'
 require 'pusher'
 require_relative 'models/user'
+require_relative 'models/follow'
+require_relative 'models/tweet'
+require_relative 'lib/bulk_data'
 
 class ServiceApp < Sinatra::Base
   before do
