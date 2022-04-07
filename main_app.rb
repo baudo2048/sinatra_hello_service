@@ -19,6 +19,8 @@ class MainApp < Sinatra::Base
   get '/' do
     @logger.info "Hello Paper Trail: this is mainapp"
     @users = User.all
+    @tweets = Tweet.all
+    @follows = Follow.all
     erb :home_page
   end
 
