@@ -33,6 +33,7 @@ class MainApp < Sinatra::Base
       req.params = {user_count: 250}
       req.headers = {'Content-Type' => 'application/json'}
     end
+    @logger.info "synch response body: #{response.body}"
     # session[:result] = JSON.parse(response.body, symbolize_names: true)
     redirect to('/')
   end
@@ -46,6 +47,7 @@ class MainApp < Sinatra::Base
       req.params = {user_count: 250}
       req.headers = {'Content-Type' => 'application/json'}
     end
+    @logger.info "asynch response body: #{response.body}"
     # session[:result] = JSON.parse(response.body, symbolize_names: true)
     redirect to('/')
   end
