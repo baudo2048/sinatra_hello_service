@@ -83,7 +83,7 @@ class MainApp < Sinatra::Base
   end
 
   post '/seed/addtweets/sucker' do
-    SuckerRun.new.perform
+    SuckerRun.perform_async("login").new.perform
     redirect to('/')
   end
 end
