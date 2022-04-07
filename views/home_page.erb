@@ -25,6 +25,7 @@
 <div class="container">
 <h1>Code Samples for Services, Processes, Threads, and Scale</h1>
 <div class="row">
+<div class="col">
   <h2>Status</h4>
   <ul>
         <li>There are currently: <span id="user_count"><%= @users.size %></span> users</li>
@@ -34,29 +35,39 @@
         <li>Last async response at <span id="async_response"></span></li>
   </ul>
 </div>
+</div>
 <div class="row">
 <h2>Adding blocks of random users</h2>
 <p>These buttons all add 250 users to the database. In both cases the work is being done by the service app. Nothing much is being done my the mainapp.
 </p>
 <form method="POST" action="/users/add/sync">
+<div class="col">
   <button type="submit" formaction="/users/add/sync">
     add a block of users sybnchronously
   </button>
+  </div>
+<div class="col">
   <button type="submit" formaction="/users/add/async">
     add a block of users asynchronously
   </button>
+</div>
 </div>
 <div class="row">
 <h2>MainApp: Add Seed Data</h2>
 <p>These buttons will cause the main app (not the service) to add the seed data to the database. You can click around. All the work is being done by the main app.
 </p>
 <form method="POST" action="/seed/addusers/sync">
+<div class="col">
+
   <button type="submit" formaction="/seed/deleteall/sync" >
   Delete all Seed Data
   </button>
   <button type="submit" formaction="/seed/addusers/sync" >
   Add seed users
   </button>
+</div>
+<div class="col">
+
   <button type="submit" formaction="/seed/addfollows/sync" >
   Add seed follows
   </button>
@@ -68,14 +79,18 @@
   </button>
 </form>
 </div>
+</div>
 <div class="row">
 <h2>SuckerPunch Add Seed Data</h2>
 <p>These buttons will cause the main app (not the service) to add the seed data to the database.These are similar to the ones above but they use SuckerPunch to start a thread in the background.
 </p>
 <form method="POST" action="/seed/addusers/sync">
+<div class="col">
+
   <button type="submit" formaction="/seed/addtweets/sucker" >
   Add seed tweets
   </button>
+</div>
 </form>
 </div>
 
