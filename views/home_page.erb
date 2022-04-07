@@ -8,12 +8,12 @@
 <li>last response: <%= session[:result] %></li>
 </ul>
 <h4>Adding blocks of random users</h4>
-<form method="POST" action="/users/add/ssync">
-  <button type="submit" formaction="/users/add/ssync">
+<form method="POST" action="/users/add/sync">
+  <button type="submit" formaction="/users/add/sync">
     add a block of users sybnchronously
   </button>
   <button type="submit" formaction="/users/add/async">
-    add a block of users asybnchronously
+    add a block of users asynchronously
   </button>
 <h4>SYNCHRONOUS Add Seed Data</h4>
 <form method="POST" action="/seed/addusers/sync">
