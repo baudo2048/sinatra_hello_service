@@ -48,7 +48,6 @@ class BulkData
         tweets_to_add << row.to_h
       end
     end
-    @logger.info("sql for add_all: #{Tweet.insert_all.to_sql}")
     Tweet.insert_all tweets_to_add
   end
 end

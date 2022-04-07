@@ -31,6 +31,8 @@
       <li>Last async response at <span id="async_response"></span></li>
 </ul>
 <h4>Adding blocks of random users</h4>
+<p>These buttons all add 250 users to the database. In both cases the work is being done by the service app. Nothing much is being done my the mainapp.
+</p>
 <form method="POST" action="/users/add/sync">
   <button type="submit" formaction="/users/add/sync">
     add a block of users sybnchronously
@@ -38,7 +40,9 @@
   <button type="submit" formaction="/users/add/async">
     add a block of users asynchronously
   </button>
-<h4>SYNCHRONOUS Add Seed Data</h4>
+<h4>MainApp: Add Seed Data</h4>
+<p>These buttons will cause the main app (not the service) to add the seed data to the database. You can click around. All the work is being done by the main app.
+</p>
 <form method="POST" action="/seed/addusers/sync">
   <button type="submit" formaction="/seed/deleteall/sync" >
   Delete all Seed Data
