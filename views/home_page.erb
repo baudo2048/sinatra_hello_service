@@ -22,11 +22,9 @@
 <h3>SOA Demo and Test example</h1>
 <h4>Status</h4>
 <ul>
-<li>There are currently: <%= @users.size %> users</li>
-<li>There are currently: <%= @follows.size %> follows</li>
-<li>There are currently: <%= @tweets.size %> tweets</li>
-
-<li>last response: <%= session[:result] %></li>
+      <li>There are currently: <span id="user_count"><%= @users.size %></span> users</li>
+      <li>Last sync response at <%= session[:result] %></li>
+      <li>Last async response at <span id="async_response"></span></li>
 </ul>
 <h4>Adding blocks of random users</h4>
 <form method="POST" action="/users/add/sync">
