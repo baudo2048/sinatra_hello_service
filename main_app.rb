@@ -50,17 +50,21 @@ class MainApp < Sinatra::Base
 
   post '/seed/addusers/sync' do
     BulkData.new.load_all_seed_users
+    redirect to('/')
   end
   post '/seed/addfollows/sync' do
     BulkData.new.load_all_follows
+    redirect to('/')
   end
   post '/seed/addtweets/sync' do
     BulkData.new.load_all_seed_users
+    redirect to('/')
   end
 
   post '/seed/deleteall/sync' do
     BulkData.new.delete_all_tweets
     BulkData.new.delete_all_follows
     BulkData.new.delete_all_users
+    redirect to('/')
   end
 end
