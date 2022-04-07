@@ -79,4 +79,9 @@ class MainApp < Sinatra::Base
     BulkData.new.delete_all_users
     redirect to('/')
   end
+
+  post '/seed/addtweets/sucker' do
+    SuckerRun.new.perform
+    redirect to('/')
+  end
 end
