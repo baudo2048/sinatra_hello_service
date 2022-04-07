@@ -47,10 +47,20 @@ class MainApp < Sinatra::Base
     session[:result] = JSON.parse(response.body, symbolize_names: true)
     redirect to('/')
   end
-<<<<<<< Updated upstream
-=======
 
-  post '/seed/add/sync' do
+  post '/seed/addusers/sync' do
+    BulkData.new.load_all_seed_users
   end
->>>>>>> Stashed changes
+  post '/seed/addfollows/sync' do
+    BulkData.new.load_all_follows
+  end
+  post '/seed/addtweets/sync' do
+    BulkData.new.load_all_seed_users
+  end
+
+  post '/seed/deleteall/sync' do
+    BulkData.new.delete_all_tweets
+    BulkData.new.delete_all_follows
+    BulkData.new.delete_all_users
+  end
 end
