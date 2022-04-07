@@ -21,14 +21,13 @@ class MainApp < Sinatra::Base
     @users = User.all
     @tweets = Tweet.all
     @follows = Follow.all
-    @logger.info("session result #{session[:result]}")
+    @logger.info("session result |#{session[:result]}|")
     erb :home_page
   end
 
   post '/users/add/sync' do
     servicehost = ENV["SERVAPP_URL"]
     url = "https://#{servicehost}.herokuapp.com"
-    @logger.info "---> #{url}"
     conn = Faraday.new(url)
     response = conn.get("/api/user/add/sync/") do |req|
       req.params = {user_count: 250}
