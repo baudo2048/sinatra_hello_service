@@ -27,7 +27,7 @@ class BulkData
     Follow.insert_all follows_records
   end
 
-  def load_all_tweets
+  def load_seed_tweets_firsttry
     idents = User.all.pluck(:ident)
     CSV.foreach('db/seeds/tweets.csv', headers: true) do |row|
       if idents.include? row["user_ident"]
@@ -36,7 +36,7 @@ class BulkData
     end
   end
 
-  def load_seed_tweets
+  def load_seed_tweets_faster
     idents = User.all.pluck(:ident)
     tweets_to_add = []
     CSV.foreach('db/seeds/tweets.csv', headers: true) do |row|

@@ -61,7 +61,7 @@ class MainApp < Sinatra::Base
 
   post '/seed/addtweets/sync' do
     @logger.info("Adding Seed Tweets Sync")
-    BulkData.new.load_seed_tweets
+    BulkData.new.load_seed_tweets_firsttry
     redirect to('/')
   end
 
