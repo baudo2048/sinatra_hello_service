@@ -19,11 +19,9 @@ class MainApp < Sinatra::Base
   end
 
   get '/' do
-    @logger.info "Hello Paper Trail: this is mainapp"
     @users = User.all
     @tweets = Tweet.all
     @follows = Follow.all
-    @logger.info("session result |#{session[:result]}|")
     erb :home_page
   end
 
@@ -35,7 +33,6 @@ class MainApp < Sinatra::Base
       req.params = {user_count: 250}
       req.headers = {'Content-Type' => 'application/json'}
     end
-    @logger.info "synch response body: #{response.body}"
     # session[:result] = JSON.parse(response.body, symbolize_names: true)
     redirect to('/')
   end
@@ -43,7 +40,6 @@ class MainApp < Sinatra::Base
   post '/users/add/async' do
     servicehost = ENV["SERVAPP_URL"]
     url = "https://#{servicehost}.herokuapp.com"
-    @logger.info "---> #{url}"
     conn = Faraday.new(url)
     response = conn.get("/api/user/add/async/") do |req|
       req.params = {user_count: 250}
@@ -64,7 +60,7 @@ class MainApp < Sinatra::Base
   end
 
   post '/seed/addtweets/sync' do
-    @logger.info("Adding Seed Tweets Sync")
+    @logger.info("addtweets/sync")
     BulkData.new.load_seed_tweets_firsttry
     redirect to('/')
   end

@@ -15,7 +15,6 @@ require_relative 'lib/bulk_data'
 class ServiceApp < Sinatra::Base
   before do
     @logger = Logger.new($stdout)
-    @logger.info "Hello Paper Trail: this is servapp"
     @pusher = Pusher::Client.new(
       app_id: '1363367',
       key: 'dd9f23cab2c8652cbd08',
@@ -27,14 +26,12 @@ class ServiceApp < Sinatra::Base
 
   get "/api/user/add/sync/?" do
     content_type :json
-    @logger.info "Sync equesting: #{params[:user_count]}"
     create_random_user(params[:user_count].to_i)
     json({message: Time.now})
   end
 
   get "/api/user/add/async/?" do
     content_type :json
-    @logger.info "Sync requesting: #{params[:user_count]}"
     Thread.new do
       create_random_user(params[:user_count].to_i)
       @logger.info "Asynch processing done. Triggering push"
