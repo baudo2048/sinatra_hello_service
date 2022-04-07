@@ -1,6 +1,10 @@
 require 'csv'
 require_relative '../main_app'
 class BulkData
+  def initialize
+    @logger = Logger.new($stdout)
+  end
+
   def load_all_seed_users
     csv = CSV.read('db/seeds/users.csv', headers: true)
     csv_array_of_hash = csv.map(&:to_h)
@@ -44,6 +48,7 @@ class BulkData
         tweets_to_add << row.to_h
       end
     end
+    @logger.info("sql for add_all: #{Tweet.insert_all.to_sql}")
     Tweet.insert_all tweets_to_add
   end
 end
