@@ -38,10 +38,10 @@
 </div>
 <div class="row">
 <h2>Adding blocks of random users</h2>
+<div class="col-4">
 <p>These buttons all add 250 users to the database. In both cases the work is being done by the service app. Nothing much is being done my the mainapp.
 </p>
 <form method="POST" action="/users/add/sync">
-<div class="col-5">
   <button type="submit" formaction="/users/add/sync">
     add a block of users sybnchronously
   </button>
@@ -50,10 +50,10 @@
   </button>
 </div>
 <h2>MainApp: Add Seed Data</h2>
+<div class="col-4">
 <p>These buttons will cause the main app (not the service) to add the seed data to the database. You can click around. All the work is being done by the main app.
 </p>
 <form method="POST" action="/seed/addusers/sync">
-<div class="col-5">
 
   <button type="submit" formaction="/seed/deleteall/sync" >
   Delete all Seed Data
@@ -75,10 +75,10 @@
 </div>
 <div class="row">
 <h2>SuckerPunch Add Seed Data</h2>
+<div class="col-4">
 <p>These buttons will cause the main app (not the service) to add the seed data to the database.These are similar to the ones above but they use SuckerPunch to start a thread in the background.
 </p>
 <form method="POST" action="/seed/addusers/sync">
-<div class="col-5">
 
   <button type="submit" formaction="/seed/addtweets/sucker" >
   Add seed tweets
