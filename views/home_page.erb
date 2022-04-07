@@ -13,7 +13,9 @@
     var channel = pusher.subscribe('my-channel');
     channel.bind('my-event', function (data) {
       document.getElementById('async_response').innerHTML = JSON.stringify(data.message);
-      document.getElementById('user_count').innerHTML = JSON.stringify(data.final_total);
+      document.getElementById('user_count').innerHTML = JSON.stringify(data.user_total);
+      document.getElementById('tweet_count').innerHTML = JSON.stringify(data.tweet_total);
+      document.getElementById('follow_count').innerHTML = JSON.stringify(data.follow_total);
     });
   </script>
 </head>
@@ -23,6 +25,8 @@
 <h4>Status</h4>
 <ul>
       <li>There are currently: <span id="user_count"><%= @users.size %></span> users</li>
+      <li>There are currently: <span id="tweet_count"><%= @tweets.size %></span> tweets</li>
+      <li>There are currently: <span id="follow_count"><%= @follows.size %></span> follows</li>
       <li>Last sync response at <%= session[:result] %></li>
       <li>Last async response at <span id="async_response"></span></li>
 </ul>

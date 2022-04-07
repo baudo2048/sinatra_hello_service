@@ -38,7 +38,9 @@ class ServiceApp < Sinatra::Base
       @logger.info "Asynch processing done. Triggering push"
       @pusher.trigger('my-channel', 'my-event', {
                         message: Time.now.to_s,
-                        final_total: final_total.to_s
+                        user_total: User.all.count.to_s,
+                        tweet_total: Tweet.all.count.to_s,
+                        follow_total: Follow.all.count.to_s
                       })
     end
     {message: " #{Time.now}"}.to_json
