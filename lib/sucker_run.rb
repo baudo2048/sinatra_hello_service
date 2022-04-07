@@ -8,5 +8,6 @@ class SuckerRun
   def perform
     @logger.info "starting background suckerpunch"
     BulkData.new.load_seed_tweets_firsttry
+    @logger.info "completed background suckerpunch"
   end
 end
