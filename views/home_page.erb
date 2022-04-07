@@ -7,31 +7,26 @@
 
 <li>last response: <%= session[:result] %></li>
 </ul>
-<h4>Syncronous Invocations</h4>
+<h4>Adding blocks of random users</h4>
 <form method="POST" action="/users/add/ssync">
-  <input type="submit" />
-  </form>
-<h4>Async Invocations</h4>
-<form method="POST" action="/users/add/async">
-  <input type="submit" />
-</form>
-<h4>Sync Add Seed Users</h4>
+  <button type="submit" formaction="/users/add/ssync">
+    add a block of users sybnchronously
+  </button>
+  <button type="submit" formaction="/users/add/async">
+    add a block of users asybnchronously
+  </button>
+<h4>SYNCHRONOUS Add Seed Data</h4>
 <form method="POST" action="/seed/addusers/sync">
-  <input type="submit" />
-</form>
-<h4>Sync Add Seed Follows</h4>
-<form method="POST" action="/seed/addfollows/sync">
-  <input type="submit" />
-</form>
-<h4>Sync Add Seed Tweets</h4>
-<form method="POST" action="/seed/addtweets/sync">
   <button type="submit" formaction="/seed/deleteall/sync" >
   Delete all Seed Data
   </button>
-  <input type="submit" />
-</form>
-
-<h4>Sync Add Delete All Seed</h4>
-<form method="POST" action="/seed/deleteall/sync">
-  <input type="submit" value="foo"/>
+  <button type="submit" formaction="/seed/addusers/sync" >
+  Add seed users
+  </button>
+  <button type="submit" formaction="/seed/addfollows/sync" >
+  Add seed follows
+  </button>
+  <button type="submit" formaction="/seed/addtweets/sync" >
+  Add seed tweets
+  </button>
 </form>
