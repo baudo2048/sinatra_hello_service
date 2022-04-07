@@ -65,7 +65,14 @@ class MainApp < Sinatra::Base
     redirect to('/')
   end
 
+  post '/seed/addtweets/sync' do
+    @logger.info("Adding Seed Tweets Sync")
+    BulkData.new.load_seed_tweets_firsttry
+    redirect to('/')
+  end
+
   post '/seed/deleteall/sync' do
+    @logger.info(params)
     BulkData.new.delete_all_tweets
     BulkData.new.delete_all_follows
     BulkData.new.delete_all_users
