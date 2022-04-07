@@ -1,3 +1,4 @@
+require "sucker_punch"
 require 'sinatra/base'
 require 'json'
 require 'logger'
