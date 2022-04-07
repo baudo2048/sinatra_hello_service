@@ -43,7 +43,7 @@ class ServiceApp < Sinatra::Base
                         follow_total: Follow.all.count.to_s
                       })
     end
-    {message: " #{Time.now}"}.to_json
+    {message: Time.now.to_s}.to_json
   end
 
   def create_random_user(count)
