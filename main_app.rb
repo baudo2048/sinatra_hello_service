@@ -72,7 +72,6 @@ class MainApp < Sinatra::Base
   end
 
   post '/seed/deleteall/sync' do
-    @logger.info(params)
     BulkData.new.delete_all_tweets
     BulkData.new.delete_all_follows
     BulkData.new.delete_all_users
