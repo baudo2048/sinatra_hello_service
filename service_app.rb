@@ -4,6 +4,7 @@ require 'logger'
 require 'faker'
 require 'active_record'
 require 'sinatra/activerecord'
+require "sinatra/json"
 require 'pusher'
 require_relative 'models/user'
 require_relative 'models/follow'
@@ -27,12 +28,12 @@ class ServiceApp < Sinatra::Base
     content_type :json
     @logger.info "Sync equesting: #{params[:user_count]}"
     create_random_user(params[:user_count].to_i)
-    {message: Time.now.to_s}.to_json
+    json message: Time.now.to_s
   end
 
   get "/api/user/add/async/?" do
     content_type :json
-    @logger.info "Sync equesting: #{params[:user_count]}"
+    @logger.info "Sync requesting: #{params[:user_count]}"
     Thread.new do
       final_total = create_random_user(params[:user_count].to_i)
       @logger.info "Asynch processing done. Triggering push"
@@ -43,7 +44,7 @@ class ServiceApp < Sinatra::Base
                         follow_total: Follow.all.count.to_s
                       })
     end
-    {message: Time.now.to_s}.to_json
+    json message: Time.now.to_s
   end
 
   def create_random_user(count)
