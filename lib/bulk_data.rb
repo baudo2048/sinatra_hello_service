@@ -32,12 +32,14 @@ class BulkData
   end
 
   def load_seed_tweets_firsttry
+    @logger.info("Running Tweets First Try")
     idents = User.all.pluck(:ident)
     CSV.foreach('db/seeds/tweets.csv', headers: true) do |row|
       if idents.include? row["user_ident"]
         Tweet.insert row.to_h
       end
     end
+    @logger.info("Completed Tweets First Try")
   end
 
   def load_seed_tweets_faster
