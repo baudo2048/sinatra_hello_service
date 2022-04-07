@@ -7,7 +7,9 @@ class SuckerRun
 
   def perform
     @logger.info "starting background suckerpunch"
-    BulkData.new.load_seed_tweets_firsttry
+    ActiveRecord::Base.connection_pool.with_connection do
+      BulkData.new.load_seed_tweets_firsttry
+    end
     @logger.info "completed background suckerpunch"
   end
 end
