@@ -17,12 +17,11 @@ class MainApp < Sinatra::Base
   end
 
   get '/' do
-    session[:result] = {message: "n/a"}.to_json
-
     @logger.info "Hello Paper Trail: this is mainapp"
     @users = User.all
     @tweets = Tweet.all
     @follows = Follow.all
+    @logger.info("session result #{session[:result]}")
     erb :home_page
   end
 
