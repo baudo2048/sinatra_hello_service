@@ -27,7 +27,7 @@
       <li>There are currently: <span id="user_count"><%= @users.size %></span> users</li>
       <li>There are currently: <span id="tweet_count"><%= @tweets.size %></span> tweets</li>
       <li>There are currently: <span id="follow_count"><%= @follows.size %></span> follows</li>
-      <li>Last sync response at <%= session[:result] %></li>
+      <li>Last sync response at <span id="sync_response"></span></li>
       <li>Last async response at <span id="async_response"></span></li>
 </ul>
 <h4>Adding blocks of random users</h4>
