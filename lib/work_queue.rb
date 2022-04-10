@@ -1,7 +1,7 @@
 require "bunny"
 class WorkQueue
   def initialize
-    @conn = Bunny.new
+    @conn = Bunny.new ENV['CLOUDAMQP_URL']
   end
 
   def open_channel
