@@ -9,6 +9,7 @@ require_relative 'models/follow'
 require_relative 'models/tweet'
 require_relative 'lib/bulk_data'
 require_relative 'lib/sucker_run'
+require_relative 'lib/work_queue'
 require "logger"
 
 class MainApp < Sinatra::Base
@@ -19,6 +20,7 @@ class MainApp < Sinatra::Base
     servicehost = ENV["SERVAPP_URL"]
     url = "https://#{servicehost}.herokuapp.com"
     @conn = Faraday.new(url)
+    @queue = WorkQueue.new
   end
 
   get '/' do
@@ -81,7 +83,15 @@ class MainApp < Sinatra::Base
   end
 
   post '/users/add/queue' do
-    SuckerRun.perform_async
+    @queue.open_channel
+    @queue.publish_user_create_message(create_random_users_array(10))
+    @queue.close_channel
     redirect to('/')
+  end
+
+  def create_random_users_json(count)
+    result = []
+    count.times { result << {name: Faker::Name.name, email: Faker::Internet.email} }
+    result.to_json
   end
 end
