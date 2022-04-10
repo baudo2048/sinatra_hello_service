@@ -16,6 +16,9 @@ class MainApp < Sinatra::Base
 
   before do
     @logger = Logger.new($stdout)
+    servicehost = ENV["SERVAPP_URL"]
+    url = "https://#{servicehost}.herokuapp.com"
+    @conn = Faraday.new(url)
   end
 
   get '/' do
@@ -26,27 +29,21 @@ class MainApp < Sinatra::Base
   end
 
   post '/users/add/sync' do
-    servicehost = ENV["SERVAPP_URL"]
-    url = "https://#{servicehost}.herokuapp.com"
-    conn = Faraday.new(url)
-    response = conn.get("/api/user/add/sync/") do |req|
+    response = @conn.get("/api/user/add/sync/") do |req|
       req.params = {user_count: 250}
       req.headers = {'Content-Type' => 'application/json'}
     end
-    # session[:result] = JSON.parse(response.body, symbolize_names: true)
+    session[:result] = JSON.parse(response.body, symbolize_names: true)
     redirect to('/')
   end
 
   post '/users/add/async' do
-    servicehost = ENV["SERVAPP_URL"]
-    url = "https://#{servicehost}.herokuapp.com"
-    conn = Faraday.new(url)
-    response = conn.get("/api/user/add/async/") do |req|
+    response = @conn.get("/api/user/add/async/") do |req|
       req.params = {user_count: 250}
       req.headers = {'Content-Type' => 'application/json'}
     end
     @logger.info "asynch response body: #{response.body}"
-    # session[:result] = JSON.parse(response.body, symbolize_names: true)
+    session[:result] = JSON.parse(response.body, symbolize_names: true)
     redirect to('/')
   end
 
@@ -79,6 +76,11 @@ class MainApp < Sinatra::Base
   end
 
   post '/seed/addtweets/sucker' do
+    SuckerRun.perform_async
+    redirect to('/')
+  end
+
+  post '/users/add/queue' do
     SuckerRun.perform_async
     redirect to('/')
   end
