@@ -13,6 +13,11 @@ require_relative 'models/tweet'
 require_relative 'lib/bulk_data'
 
 class ServiceApp < Sinatra::Base
+  configure do
+    @queue = WorkQueue.new
+    @queue.start_background
+  end
+
   before do
     @logger = Logger.new($stdout)
     @pusher = Pusher::Client.new(

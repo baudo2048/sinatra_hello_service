@@ -31,6 +31,7 @@
           <li>There are currently: <span id="follow_count"><%= @follows.size %></span> follows</li>
           <li>Last sync response at <span id="sync_response"></span></li>
           <li>Last async response at <span id="async_response"></span></li>
+          <li>There are currently <%= @queue.message_count %> entries in the create users queue</li>
         </ul>
       </div>
     </div>
