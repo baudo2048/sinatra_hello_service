@@ -91,7 +91,7 @@ class MainApp < Sinatra::Base
 
   post '/users/add/queue' do
     @logger.info("Adding users using aueue")
-    settings.queue.publish_user_create_message(create_random_users_json(10))
+    settings.queue.publish_user_create_message(create_random_users_json(20))
     redirect to('/')
   end
 
