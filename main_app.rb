@@ -83,6 +83,7 @@ class MainApp < Sinatra::Base
   end
 
   post '/users/add/queue' do
+    @logger.info("Adding Users Queue")
     @queue.open_channel
     @queue.publish_user_create_message(create_random_users_array(10))
     @queue.close_channel
