@@ -4,6 +4,7 @@ require "faraday"
 require "json"
 require 'active_record'
 require 'sinatra/activerecord'
+require 'faker'
 require_relative 'models/user'
 require_relative 'models/follow'
 require_relative 'models/tweet'
