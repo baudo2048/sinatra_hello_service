@@ -1,4 +1,5 @@
 require "bunny"
+require 'models/user'
 class WorkQueue
   def initialize url
     @logger = Logger.new($stdout)
@@ -26,11 +27,9 @@ class WorkQueue
     Thread.new do
       @logger.info("WorkQueue running")
       loop do
-        @queue.subscribe(block: true) do |delivery_info, properties, body|
+        @queue.subscribe(block: true) do |_delivery_info, _properties, body|
           @logger.info("WorkQueue received message")
-          @logger.info("WorkQueue message body: #{body}")
-          @logger.info("WorkQueue message properties: #{properties}")
-          @logger.info("WorkQueue message delivery_info: #{delivery_info}")
+          User.add_all JSON.parse(body)
         end
       end
     end
