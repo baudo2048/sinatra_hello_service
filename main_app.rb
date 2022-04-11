@@ -18,7 +18,8 @@ class MainApp < Sinatra::Base
   configure do
     set :logger, Logger.new($stdout)
     settings.logger.info("mainapp configure worked class #{ENV}")
-    set :queue, WorkQueue.new(ENV['CLOUDAMQP_URL'])
+    workqueue = WorkQueue.new(ENV['CLOUDAMQP_URL'])
+    set :queue, workqueue
   end
 
   before do
