@@ -1,5 +1,5 @@
 require "bunny"
-require_relative 'models/user'
+require_relative '../models/user'
 class WorkQueue
   def initialize url
     @logger = Logger.new($stdout)
