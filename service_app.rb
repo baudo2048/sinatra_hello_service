@@ -11,7 +11,7 @@ require_relative 'models/user'
 require_relative 'models/follow'
 require_relative 'models/tweet'
 require_relative 'lib/bulk_data'
-
+require_relative 'lib/work_queue'
 class ServiceApp < Sinatra::Base
   configure do
     @queue = WorkQueue.new
