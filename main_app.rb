@@ -26,6 +26,7 @@ class MainApp < Sinatra::Base
     servicehost = ENV["SERVAPP_URL"]
     url = "https://#{servicehost}.herokuapp.com"
     @conn = Faraday.new(url)
+    settings.logger.info("mainapp before block #{ENV.class}")
   end
 
   get '/' do
