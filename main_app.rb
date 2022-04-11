@@ -13,11 +13,11 @@ require_relative 'lib/sucker_run'
 require_relative 'lib/work_queue'
 require "logger"
 
-configure do
-  set :queue, WorkQueue.new
-end
 class MainApp < Sinatra::Base
   enable :sessions
+  configure do
+    set :queue, WorkQueue.new
+  end
 
   before do
     @logger = Logger.new($stdout)
