@@ -29,8 +29,6 @@
           <li>There are currently: <span id="user_count"><%= @users.size %></span> users</li>
           <li>There are currently: <span id="tweet_count"><%= @tweets.size %></span> tweets</li>
           <li>There are currently: <span id="follow_count"><%= @follows.size %></span> follows</li>
-          <li>Last sync response at <span id="sync_response"></span></li>
-          <li>Last async response at <span id="async_response"></span></li>
           <li>There are currently <%= settings.queue.message_count %> entries in the create users queue</li>
         </ul>
         <p>Click <a href="https://my.papertrailapp.com/groups/32204561/events?focus=1449981039202930697">here to open the log viewer</a></p>
@@ -41,6 +39,10 @@
       <h2>Adding blocks of random users</h2>
       <div class="col-6">
         <p>These buttons all add 250 users to the database. In both cases the work is being done by the service app. Nothing much is being done my the mainapp.
+        <ul>
+                  <li>Last sync response at <span id="sync_response"></span></li>
+          <li>Last async response at <span id="async_response"></span></li>
+</ul>
         </p>
         <form method="POST" action="/users/add/sync">
           <button type="submit" formaction="/users/add/sync">
