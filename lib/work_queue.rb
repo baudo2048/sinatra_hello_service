@@ -38,4 +38,5 @@ class WorkQueue
         end
       end
     end
+  end
 end
