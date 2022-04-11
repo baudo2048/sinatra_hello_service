@@ -14,7 +14,7 @@ require_relative 'lib/bulk_data'
 require_relative 'lib/work_queue'
 class ServiceApp < Sinatra::Base
   configure do
-    @logger "service_app: configure"
+    @logger.info "service_app: configure"
     @queue = WorkQueue.new
     @queue.start_background
   end
