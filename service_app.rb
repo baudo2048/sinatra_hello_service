@@ -14,8 +14,15 @@ require_relative 'lib/bulk_data'
 require_relative 'lib/work_queue'
 
 class ServiceApp < Sinatra::Base
+  configure do
+    set :x, 100
+    set :logger, Logger.new($stdout)
+    settings.logger "servapp configure worked"
+  end
   before do
     @logger = Logger.new($stdout)
+    settings.logger "before block logger worked"
+
     @pusher = Pusher::Client.new(
       app_id: '1363367',
       key: 'dd9f23cab2c8652cbd08',
@@ -23,9 +30,6 @@ class ServiceApp < Sinatra::Base
       cluster: 'us2',
       encrypted: true
     )
-    @logger.info "service_app: before"
-    @queue = WorkQueue.new
-    @queue.start_background
   end
 
   get "/api/user/add/sync/?" do
