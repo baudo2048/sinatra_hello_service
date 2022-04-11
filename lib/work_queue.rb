@@ -1,8 +1,7 @@
 require "bunny"
 class WorkQueue
-  def initialize
+  def initialize url
     @logger = Logger.new($stdout)
-    url = ENV['CLOUDAMQP_URL']
     @logger.info("WorkQueue: constructing for |#{url}|")
     @conn = Bunny.new url
     @logger.info("@conn = #{@conn}")

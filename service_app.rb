@@ -17,7 +17,7 @@ class ServiceApp < Sinatra::Base
   configure do
     set :logger, Logger.new($stdout)
     settings.logger.info "servapp configure worked"
-    set :queue, WorkQueue.new
+    set :queue, WorkQueue.new(ENV['CLOUDAMQP_ONYX_URL'])
     settings.queue.start_background
   end
 
