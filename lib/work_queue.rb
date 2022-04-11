@@ -17,11 +17,11 @@ class WorkQueue
     @channel.default_exchange.publish(users_as_json, routing_key: @queue.name)
   end
 
-  def run_background
+  def start_background
+    @logger.info("Starting background worker")
     Thread.new do
       @logger.info("WorkQueue running")
       loop do
-        @logger.info("WorkQueue looping")
         @queue.subscribe(block: true) do |delivery_info, properties, body|
           @logger.info("WorkQueue received message")
           @logger.info("WorkQueue message body: #{body}")
