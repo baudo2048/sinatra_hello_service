@@ -3,7 +3,7 @@ class WorkQueue
   def initialize
     @logger = Logger.new($stdout)
     url = ENV['CLOUDAMQP_URL']
-    @logger.info("WorkQueue: constructing for #{url}")
+    @logger.info("WorkQueue: constructing for |#{url}|")
     @conn = Bunny.new url
     @logger.info("@conn = #{@conn}")
     @conn.start
