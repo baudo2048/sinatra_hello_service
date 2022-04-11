@@ -16,8 +16,6 @@ class ServiceApp < Sinatra::Base
   configure do
     @logger = Logger.new($stdout)
     @logger.info "service_app: configure"
-    @queue = WorkQueue.new
-    @queue.start_background
   end
 
   before do
@@ -29,6 +27,10 @@ class ServiceApp < Sinatra::Base
       cluster: 'us2',
       encrypted: true
     )
+    @logger = Logger.new($stdout)
+    @logger.info "service_app: configure"
+    @queue = WorkQueue.new
+    @queue.start_background
   end
 
   get "/api/user/add/sync/?" do
