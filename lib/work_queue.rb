@@ -2,7 +2,7 @@ require "bunny"
 class WorkQueue
   def initialize
     @logger = Logger.new($stdout)
-    @logger.info("Constructing WorkQueue")
+    @logger.info("WorkQueue: constructing")
     @conn = Bunny.new ENV['CLOUDAMQP_URL']
     @conn.start
     @channel = @conn.create_channel
@@ -18,7 +18,7 @@ class WorkQueue
   end
 
   def start_background
-    @logger.info("Starting background worker")
+    @logger.info("WorkQueue: Starting background worker")
     Thread.new do
       @logger.info("WorkQueue running")
       loop do
