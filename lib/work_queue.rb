@@ -17,6 +17,7 @@ class WorkQueue
   end
 
   def publish_user_create_message(users_as_json)
+    @logger.info("publish_user_create_message: #{users_as_json}")
     @channel.default_exchange.publish(users_as_json, routing_key: @queue.name)
   end
 
