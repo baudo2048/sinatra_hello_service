@@ -16,10 +16,9 @@ require "logger"
 class MainApp < Sinatra::Base
   enable :sessions
   configure do
-    set :logger, Logger.new($stdout)
+    set(:logger) { Logger.new($stdout) }
     settings.logger.info("mainapp configure worked class #{ENV}")
-    workqueue = WorkQueue.new(ENV['CLOUDAMQP_URL'])
-    set :queue, workqueue
+    set(:queue) { WorkQueue.new(ENV['CLOUDAMQP_URL']) }
   end
 
   before do
