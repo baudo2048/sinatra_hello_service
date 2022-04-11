@@ -15,10 +15,10 @@ require_relative 'lib/work_queue'
 
 class ServiceApp < Sinatra::Base
   configure do
-    set :x, 100
     set :logger, Logger.new($stdout)
     settings.logger.info "servapp configure worked"
     set :queue, WorkQueue.new
+    settings.queue.start_background
   end
 
   before do
