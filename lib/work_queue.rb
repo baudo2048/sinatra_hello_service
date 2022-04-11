@@ -29,7 +29,7 @@ class WorkQueue
       loop do
         @queue.subscribe(block: true) do |_delivery_info, _properties, body|
           @logger.info("WorkQueue received message")
-          User.add_all JSON.parse(body)
+          User.insert_all JSON.parse(body)
         end
       end
     end

@@ -31,79 +31,77 @@
           <li>There are currently: <span id="follow_count"><%= @follows.size %></span> follows</li>
           <li>There are currently <%= settings.queue.message_count %> entries in the create users queue</li>
         </ul>
-        <p>Click <a href="https://my.papertrailapp.com/groups/32204561/events?focus=1449981039202930697">here to open the log viewer</a></p>
-        <p>Click <a href="https://moose.rmq.cloudamqp.com/#/"> here to view RabbitMQ console (private)</a></p>
-      </div>
-    </div>
-    <div class="row">
-      <h2>Adding blocks of random users</h2>
-      <div class="col-6">
-        <p>These buttons all add 250 users to the database. In both cases the work is being done by the service app. Nothing much is being done my the mainapp.
-        <ul>
-                  <li>Last sync response at <span id="sync_response"></span></li>
-          <li>Last async response at <span id="async_response"></span></li>
-</ul>
-        </p>
-        <form method="POST" action="/users/add/sync">
-          <button type="submit" formaction="/users/add/sync">
-            add a block of users synchronously
-          </button>
-          <button type="submit" formaction="/users/add/async">
-            add a block of users asynchronously
-          </button>
+        <div>Click <a href="https://my.papertrailapp.com/groups/32204561/events?focus=1449981039202930697">here to open the log viewer</a></div>
+          <div>Click <a href="https://moose.rmq.cloudamqp.com/#/"> here to view RabbitMQ console (private)</a></div>
         </div>
-      </form>
-    </div>
-    <div class="row">
-      <div class="col-6">
-        <h2>MainApp: Add Seed Data</h2>
-        <p>These buttons will cause the main app (not the service) to add the seed data to the database. You can click around. All the work is being done by the main app.
-        </p>
-        <form method="POST" action="/seed/addusers/sync">
-          <button type="submit" formaction="/seed/deleteall/sync" >
-            Delete all Seed Data
-          </button>
-          <button type="submit" formaction="/seed/addusers/sync" >
-            Add seed users
-          </button>
-          <button type="submit" formaction="/seed/addfollows/sync" >
-            Add seed follows
-          </button>
-          <button type="submit" formaction="/seed/addtweets/sync" >
-            Add seed tweets
-          </button>
-          <button type="submit" formaction="/seed/addtweetsfast/sync" >
-            Faster Algorithm Add seed tweets
-          </button>
-        </form>
       </div>
-    </div>
-    <div class="row">
-      <h2>SuckerPunch Add Seed Data</h2>
-      <div class="col-6">
-        <p>These buttons will cause the main app (not the service) to add the seed data to the database.These are similar to the ones above but they use SuckerPunch to start a thread in the background.
-        </p>
-        <form method="POST" action="/seed/addusers/sync">
-          <button type="submit" formaction="/seed/addtweets/sucker" >
-            Add seed tweets
-          </button>
-        </form>
-      </div>
-    </div>
       <div class="row">
-      <h2>Add records using Queueing</h2>
-      <div class="col-6">
-        <p>These buttons will post a workitem on a RabbitMQ queue to create a block of random users. Servapp will then process that queue as best it can.
-        </p>
-        <form method="POST">
-          <button type="submit" formaction="/users/add/queue">
-            Add users using queue
-          </button>
+        <h2>Adding blocks of random users</h2>
+        <div class="col-6">
+          <p>These buttons all add 250 users to the database. In both cases the work is being done by the service app. Nothing much is being done my the mainapp.
+            <ul>
+              <li>Last sync response at <span id="sync_response"></span></li>
+              <li>Last async response at <span id="async_response"></span></li>
+            </ul>
+          </p>
+          <form method="POST" action="/users/add/sync">
+            <button type="submit" formaction="/users/add/sync">
+              add a block of users synchronously
+            </button>
+            <button type="submit" formaction="/users/add/async">
+              add a block of users asynchronously
+            </button>
+          </div>
         </form>
       </div>
+      <div class="row">
+        <div class="col-6">
+          <h2>MainApp: Add Seed Data</h2>
+          <p>These buttons will cause the main app (not the service) to add the seed data to the database. You can click around. All the work is being done by the main app.
+          </p>
+          <form method="POST" action="/seed/addusers/sync">
+            <button type="submit" formaction="/seed/deleteall/sync" >
+              Delete all Seed Data
+            </button>
+            <button type="submit" formaction="/seed/addusers/sync" >
+              Add seed users
+            </button>
+            <button type="submit" formaction="/seed/addfollows/sync" >
+              Add seed follows
+            </button>
+            <button type="submit" formaction="/seed/addtweets/sync" >
+              Add seed tweets
+            </button>
+            <button type="submit" formaction="/seed/addtweetsfast/sync" >
+              Faster Algorithm Add seed tweets
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <h2>SuckerPunch Add Seed Data</h2>
+        <div class="col-6">
+          <p>These buttons will cause the main app (not the service) to add the seed data to the database.These are similar to the ones above but they use SuckerPunch to start a thread in the background.
+          </p>
+          <form method="POST" action="/seed/addusers/sync">
+            <button type="submit" formaction="/seed/addtweets/sucker" >
+              Add seed tweets
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <h2>Add records using Queueing</h2>
+        <div class="col-6">
+          <p>These buttons will post a workitem on a RabbitMQ queue to create a block of random users. Servapp will then process that queue as best it can.
+          </p>
+          <form method="POST">
+            <button type="submit" formaction="/users/add/queue">
+              Add users using queue
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
-
-  
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  </body>
