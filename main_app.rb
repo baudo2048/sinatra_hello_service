@@ -21,6 +21,7 @@ class MainApp < Sinatra::Base
     servicehost = ENV["SERVAPP_URL"]
     url = "https://#{servicehost}.herokuapp.com"
     @conn = Faraday.new(url)
+    set :queue, WorkQueue.new
   end
 
   get '/' do
@@ -84,7 +85,7 @@ class MainApp < Sinatra::Base
 
   post '/users/add/queue' do
     @logger.info("Adding users using aueue")
-    @queue.publish_user_create_message(create_random_users_json(10))
+    settings.queue.publish_user_create_message(create_random_users_json(10))
     redirect to('/')
   end
 
