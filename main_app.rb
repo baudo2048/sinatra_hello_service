@@ -16,6 +16,10 @@ require "logger"
 class MainApp < Sinatra::Base
   enable :sessions
 
+  configure do
+    set :queue, WorkQueue.new
+  end
+
   before do
     @logger = Logger.new($stdout)
     servicehost = ENV["SERVAPP_URL"]
