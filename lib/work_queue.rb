@@ -1,6 +1,7 @@
 require "bunny"
 class WorkQueue
   def initialize
+    @logger.info("Constructing WorkQueue")
     @conn = Bunny.new ENV['CLOUDAMQP_URL']
   end
 
@@ -10,8 +11,8 @@ class WorkQueue
     @queue = @channel.queue("user_create")
   end
 
-  def publish_user_create_message(_users_as_json)
-    @channel.default_exchange.publish(users_as_array, routing_key: @queue.name)
+  def publish_user_create_message(users_as_json)
+    @channel.default_exchange.publish(users_as_json, routing_key: @queue.name)
   end
 
   def close_channel
