@@ -16,15 +16,11 @@ require_relative 'lib/work_queue'
 class ServiceApp < Sinatra::Base
   configure do
     set(:logger) { Logger.new($stdout) }
-    settings.logger.info "servapp configure worked+ #{ENV.inspect}"
     set(:queue) { WorkQueue.new(ENV['CLOUDAMQP_ONYX_URL']) }
     settings.queue.start_background
   end
 
   before do
-    @logger = Logger.new($stdout)
-    settings.logger.info "before block logger worked"
-
     @pusher = Pusher::Client.new(
       app_id: '1363367',
       key: 'dd9f23cab2c8652cbd08',
@@ -44,7 +40,6 @@ class ServiceApp < Sinatra::Base
     content_type :json
     Thread.new do
       create_random_user(params[:user_count].to_i)
-      @logger.info "Asynch processing done. Triggering push"
       @pusher.trigger('my-channel', 'my-event', {
                         message: Time.now.to_s,
                         user_total: User.all.count.to_s,

@@ -17,7 +17,6 @@ class MainApp < Sinatra::Base
   enable :sessions
   configure do
     set(:logger) { Logger.new($stdout) }
-    settings.logger.info("mainapp configure worked class #{ENV}")
     set(:queue) { WorkQueue.new(ENV['CLOUDAMQP_URL']) }
   end
 
@@ -26,8 +25,6 @@ class MainApp < Sinatra::Base
     servicehost = ENV["SERVAPP_URL"]
     url = "https://#{servicehost}.herokuapp.com"
     @conn = Faraday.new(url)
-    settings.logger.info("mainapp before block #{ENV}")
-    settings.logger.info("mainapp before block #{ENV["SERVAPP_URL"]}")
   end
 
   get '/' do
@@ -66,7 +63,6 @@ class MainApp < Sinatra::Base
   end
 
   post '/seed/addtweets/sync' do
-    @logger.info("addtweets/sync")
     BulkData.new.load_seed_tweets_firsttry
     redirect to('/')
   end
@@ -98,6 +94,6 @@ class MainApp < Sinatra::Base
   def create_random_users_json(count)
     result = []
     count.times { result << {name: Faker::Name.name, email: Faker::Internet.email} }
-    result.to_json
+    result
   end
 end
