@@ -13,14 +13,14 @@ require_relative 'models/tweet'
 require_relative 'lib/bulk_data'
 require_relative 'lib/work_queue'
 
-class ServiceApp < Sinatra::Base
-  configure do
-    set :logger, Logger.new($stdout)
-    settings.logger.info "servapp configure worked"
-    set :queue, WorkQueue.new
-    settings.queue.start_background
-  end
+configure do
+  set :logger, Logger.new($stdout)
+  settings.logger.info "servapp configure worked"
+  set :queue, WorkQueue.new
+  settings.queue.start_background
+end
 
+class ServiceApp < Sinatra::Base
   before do
     @logger = Logger.new($stdout)
     settings.logger.info "before block logger worked"

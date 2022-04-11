@@ -16,7 +16,6 @@ require "logger"
 configure do
   set :queue, WorkQueue.new
 end
-
 class MainApp < Sinatra::Base
   enable :sessions
 
