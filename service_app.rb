@@ -17,11 +17,11 @@ class ServiceApp < Sinatra::Base
   configure do
     set :x, 100
     set :logger, Logger.new($stdout)
-    settings.logger "servapp configure worked"
+    settings.logger.info "servapp configure worked"
   end
   before do
     @logger = Logger.new($stdout)
-    settings.logger "before block logger worked"
+    settings.logger.info "before block logger worked"
 
     @pusher = Pusher::Client.new(
       app_id: '1363367',
