@@ -2,11 +2,15 @@ require "bunny"
 class WorkQueue
   def initialize
     @logger = Logger.new($stdout)
-    @logger.info("WorkQueue: constructing")
-    @conn = Bunny.new ENV['CLOUDAMQP_URL']
+    url = ENV['CLOUDAMQP_URL']
+    @logger.info("WorkQueue: constructing for #{url}")
+    @conn = Bunny.new url
+    @logger.info("@conn = #{@conn}")
     @conn.start
     @channel = @conn.create_channel
+    @logger.info("@channel = #{@channel}")
     @queue = @channel.queue("user_create")
+    @logger.info("@queue = #{@queue}")
   end
 
   def message_count
