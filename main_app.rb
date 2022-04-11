@@ -17,7 +17,7 @@ class MainApp < Sinatra::Base
   enable :sessions
   configure do
     set :logger, Logger.new($stdout)
-    settings.logger.info("mainapp configure worked class #{ENV.class}")
+    settings.logger.info("mainapp configure worked class #{ENV}")
     set :queue, WorkQueue.new(ENV['CLOUDAMQP_URL'])
   end
 
@@ -26,7 +26,8 @@ class MainApp < Sinatra::Base
     servicehost = ENV["SERVAPP_URL"]
     url = "https://#{servicehost}.herokuapp.com"
     @conn = Faraday.new(url)
-    settings.logger.info("mainapp before block #{ENV.class}")
+    settings.logger.info("mainapp before block #{ENV}")
+    settings.logger.info("mainapp before block #{ENV["SERVAPP_URL"]}")
   end
 
   get '/' do
