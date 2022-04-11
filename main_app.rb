@@ -21,7 +21,7 @@ class MainApp < Sinatra::Base
     servicehost = ENV["SERVAPP_URL"]
     url = "https://#{servicehost}.herokuapp.com"
     @conn = Faraday.new(url)
-    @queue = WorkQueue.new
+    @queue = WorkQueue.new.start_background
   end
 
   get '/' do

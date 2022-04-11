@@ -18,7 +18,9 @@ class ServiceApp < Sinatra::Base
     set :x, 100
     set :logger, Logger.new($stdout)
     settings.logger.info "servapp configure worked"
+    set :queue, WorkQueue.new
   end
+
   before do
     @logger = Logger.new($stdout)
     settings.logger.info "before block logger worked"
