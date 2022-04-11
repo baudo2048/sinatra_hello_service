@@ -14,11 +14,6 @@ require_relative 'lib/bulk_data'
 require_relative 'lib/work_queue'
 
 class ServiceApp < Sinatra::Base
-  configure do
-    # @logger = Logger.new($stdout)
-    # @logger.info "service_app: configure"
-  end
-
   before do
     @logger = Logger.new($stdout)
     @pusher = Pusher::Client.new(
