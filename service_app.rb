@@ -12,10 +12,11 @@ require_relative 'models/follow'
 require_relative 'models/tweet'
 require_relative 'lib/bulk_data'
 require_relative 'lib/work_queue'
+
 class ServiceApp < Sinatra::Base
   configure do
-    @logger = Logger.new($stdout)
-    @logger.info "service_app: configure"
+    # @logger = Logger.new($stdout)
+    # @logger.info "service_app: configure"
   end
 
   before do
@@ -27,8 +28,7 @@ class ServiceApp < Sinatra::Base
       cluster: 'us2',
       encrypted: true
     )
-    @logger = Logger.new($stdout)
-    @logger.info "service_app: configure"
+    @logger.info "service_app: before"
     @queue = WorkQueue.new
     @queue.start_background
   end
