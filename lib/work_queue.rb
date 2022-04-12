@@ -24,7 +24,9 @@ class WorkQueue
   end
 
   def publish_user_validate_message(user_ident_json)
+    @bunny.start
     @channel.default_exchange.publish(user_ident_json, routing_key: @valqueue.name)
+    @bunny.stop
   end
 
   def user_create_start_background
