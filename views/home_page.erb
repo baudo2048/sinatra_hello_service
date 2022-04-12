@@ -29,7 +29,8 @@
           <li>There are currently: <span id="user_count"><%= @users.size %></span> users</li>
           <li>There are currently: <span id="tweet_count"><%= @tweets.size %></span> tweets</li>
           <li>There are currently: <span id="follow_count"><%= @follows.size %></span> follows</li>
-          <li>There are currently <%= settings.queue.message_count %> entries in the create users queue</li>
+          <li>There are currently <%= settings.queue.ucmessage_count %> entries in the create users queue</li>
+          <li>There are currently <%= settings.queue.valmessage_count %> entries in the validate users queue</li>
         </ul>
         <div>Click <a href="https://my.papertrailapp.com/groups/32204561/events?focus=1449981039202930697">here to open the log viewer</a></div>
         <div>Click <a href="https://moose.rmq.cloudamqp.com/#/"> here to view RabbitMQ console (private)</a></div>
@@ -101,7 +102,6 @@
           <button type="submit" formaction="/queue/users/validate">
             Validate users using queue
           </button>
-
         </form>
       </div>
     </div>

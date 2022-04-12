@@ -10,9 +10,16 @@ class WorkQueue
     @valqueue = @channel.queue("user_validate")
   end
 
-  def message_count
+  def ucmessage_count
     @bunny.start
     count = @ucqueue.message_count
+    @bunny.stop
+    count
+  end
+
+  def valmessage_count
+    @bunny.start
+    count = @valqueue.message_count
     @bunny.stop
     count
   end
