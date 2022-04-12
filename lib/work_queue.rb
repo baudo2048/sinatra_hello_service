@@ -10,8 +10,9 @@ class WorkQueue
 
   def message_count
     @bunny.start
-    @queue.message_count
+    count = @queue.message_count
     @bunny.stop
+    count
   end
 
   def publish_user_create_message(users_as_json)
