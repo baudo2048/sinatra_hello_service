@@ -58,4 +58,5 @@ class BulkData
     @logger.info("Real Validation on user #{u.name}")
     fans = u.fans
     stars = u.stars
+  end
 end
