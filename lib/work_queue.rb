@@ -4,6 +4,7 @@ class WorkQueue
   def initialize url
     @bunny = Bunny.new url
     @bunny.start
+    @channel = @bunny.create_channel
     @queue = @bunny.queue("user_create")
   end
 
