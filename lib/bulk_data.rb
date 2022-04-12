@@ -52,4 +52,10 @@ class BulkData
     end
     Tweet.insert_all tweets_to_add
   end
+
+  def validate_user user
+    u = User.find(user)
+    @logger.info("Real Validation on user #{u.name}")
+    fans = u.fans
+    stars = u.stars
 end
