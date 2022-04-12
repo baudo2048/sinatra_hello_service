@@ -5,7 +5,7 @@ class WorkQueue
     @bunny = Bunny.new url
     @bunny.start
     @channel = @bunny.create_channel
-    @queue = @bunny.queue("user_create")
+    @queue = @channel.queue("user_create")
   end
 
   def message_count
