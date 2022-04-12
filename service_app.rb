@@ -17,7 +17,8 @@ class ServiceApp < Sinatra::Base
   configure do
     set(:logger) { Logger.new($stdout) }
     set(:queue) { WorkQueue.new(ENV['CLOUDAMQP_ONYX_URL']) }
-    settings.queue.start_background
+    settings.queue.user_validate_start_background
+    settings.queue.user_create_start_background
   end
 
   before do
