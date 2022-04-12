@@ -94,6 +94,6 @@ class MainApp < Sinatra::Base
   def create_random_users_json(count)
     result = []
     count.times { result << {name: Faker::Name.name, email: Faker::Internet.email} }
-    result
+    result.to_json
   end
 end
