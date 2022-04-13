@@ -3,6 +3,8 @@ require_relative '../models/user'
 require_relative '../lib/validate'
 class WorkQueue
   def initialize url
+    @logger = Logger.new($stdout)
+    @logger "Create and start queue"
     @bunny = Bunny.new(url, {tls_silence_warnings: true})
     @bunny.start
     @channel = @bunny.create_channel
