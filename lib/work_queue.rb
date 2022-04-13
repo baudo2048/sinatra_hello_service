@@ -3,7 +3,7 @@ require_relative '../models/user'
 require_relative '../lib/validate'
 class WorkQueue
   def initialize url
-    @bunny = Bunny.new (url, {tls_silence_warnings: true})
+    @bunny = Bunny.new(url, {tls_silence_warnings: true})
     @bunny.start
     @channel = @bunny.create_channel
     @ucqueue = @channel.queue("user_create")
