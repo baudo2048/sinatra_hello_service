@@ -41,7 +41,6 @@ class WorkQueue
   def user_validate_start_background
     Thread.new do
       loop do
-        @bunny.start
         @valqueue.subscribe(block: true) do |_delivery_info, _properties, body|
           Validate.new.validate_user JSON.parse(body)
         end
