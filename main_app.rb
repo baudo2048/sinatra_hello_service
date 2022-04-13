@@ -91,7 +91,10 @@ class MainApp < Sinatra::Base
   end
 
   post '/queue/users/validate' do
-    settings.queue.publish_user_validate_message(User.limit(1).order("random()").first.id.to_json)
+    user = User.limit(1).order("random()")
+    if user.size > 0
+      user_to_validate = user.first.id.to_json
+      settings.queue.publish_user_validate_message(user_to_validate)
     redirect to('/')
   end
 
