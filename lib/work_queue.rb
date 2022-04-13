@@ -6,10 +6,10 @@ class WorkQueue
     @logger = Logger.new($stdout)
     @logger.info "Create and start queue"
     @bunny = Bunny.new(url, {tls_silence_warnings: true})
+    @bunny.start
     @channel = @bunny.create_channel
     @ucqueue = @channel.queue("user_create")
     @valqueue = @channel.queue("user_validate")
-    @bunny.start
   end
 
   def ucmessage_count
